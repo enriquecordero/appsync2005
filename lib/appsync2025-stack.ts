@@ -6,6 +6,7 @@ import {
   SchemaFile,
   Visibility,
   IntrospectionConfig,
+  Definition,
 } from "aws-cdk-lib/aws-appsync";
 import { Construct } from "constructs";
 import * as logs from "aws-cdk-lib/aws-logs";
@@ -27,7 +28,7 @@ export class Appsync2025Stack extends cdk.Stack {
     const api = new GraphqlApi(this, "Api", {
       // ========== CONFIGURACIÓN BÁSICA ==========
       name: "cdk-appsync-api",
-      schema: SchemaFile.fromAsset("graphql/schema.graphql"),
+      definition: Definition.fromFile("graphql/schema.graphql"),
 
       // ========== CONFIGURACIÓN DE AUTORIZACIÓN ==========
       authorizationConfig: {
@@ -99,7 +100,9 @@ export class Appsync2025Stack extends cdk.Stack {
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // Facturación on-demand
 
       // Configuración adicional para producción
-      pointInTimeRecovery: false, // Habilitar en producción
+      pointInTimeRecoverySpecification: {
+        pointInTimeRecoveryEnabled: false, // Habilitar en producción
+      },
       deletionProtection: false, // Habilitar en producción
     });
 
@@ -150,7 +153,10 @@ export class Appsync2025Stack extends cdk.Stack {
       },
 
       // Configuración de logging y monitoreo
-      logRetention: logs.RetentionDays.ONE_WEEK,
+      logGroup: new logs.LogGroup(this, "ListBooksLogGroup", {
+        retention: logs.RetentionDays.ONE_WEEK,
+        removalPolicy: cdk.RemovalPolicy.DESTROY,
+      }),
       tracing: cdk.aws_lambda.Tracing.ACTIVE, // X-Ray tracing
 
       // Descripción para documentación

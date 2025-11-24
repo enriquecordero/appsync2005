@@ -22,10 +22,12 @@
     "strictPropertyInitialization": false,
     "typeRoots": [
       "./node_modules/@types"
-    ]
+    ],
+    "skipLibCheck": true
   },
   "exclude": [
     "node_modules",
-    "cdk.out"
+    "cdk.out",
+    "lambda/node_modules"
   ]
 }
