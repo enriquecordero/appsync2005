@@ -94,5 +94,9 @@ typings/
 .DS_Store
 Thumbs.db
 
+
 # HTTP Client files (secrets)
 *.http
+
+# Temporary files
+tmp/
