@@ -1,0 +1,12 @@
+type Book{
+  id: ID!
+  title: String!
+  completed: Boolean
+  rating: Int
+  review: [String]
+}
+
+type Query {
+  ListBooks: [Book]
+  #book(id: ID!): Book
+}

@@ -1,0 +1,14 @@
+{
+  "name": "AppSync 2025 GraphQL API",
+  "schemaPath": "graphql/schema.graphql",
+  "extensions": {
+    "endpoints": {
+      "default": {
+        "url": "https://s5apb3s7jzh43ewkgqfch7ijly.appsync-api.us-east-1.amazonaws.com/graphql",
+        "headers": {
+          "x-api-key": "da2-23eiy5v2yjeploeewwamcbgrva"
+        }
+      }
+    }
+  }
+}
