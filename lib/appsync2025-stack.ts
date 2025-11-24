@@ -19,7 +19,7 @@ export class Appsync2025Stack extends cdk.Stack {
     super(scope, id, props);
 
     // CloudWatch Log Group para AppSync
-    const appsyncLogGroup = new logs.LogGroup(this, "AppSyncLogGroup", {
+   new logs.LogGroup(this, "AppSyncLogGroup", {
       logGroupName: "/aws/appsync/apis/cdk-appsync-api",
       retention: logs.RetentionDays.ONE_WEEK,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
