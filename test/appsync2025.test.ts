@@ -17,7 +17,6 @@ test("AppSync Stack Created", () => {
 
     // Verify DynamoDB Table created
     template.hasResourceProperties("AWS::DynamoDB::Table", {
-        TableName: "Books",
         BillingMode: "PAY_PER_REQUEST",
         KeySchema: [
             {

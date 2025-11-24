@@ -19,8 +19,7 @@ export class Appsync2025Stack extends cdk.Stack {
     super(scope, id, props);
 
     // CloudWatch Log Group para AppSync
-   new logs.LogGroup(this, "AppSyncLogGroup", {
-      logGroupName: "/aws/appsync/apis/cdk-appsync-api",
+    new logs.LogGroup(this, "AppSyncLogGroup", {
       retention: logs.RetentionDays.ONE_WEEK,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
     });
@@ -95,7 +94,6 @@ export class Appsync2025Stack extends cdk.Stack {
         name: "id",
         type: dynamodb.AttributeType.STRING,
       },
-      tableName: "Books",
       removalPolicy: cdk.RemovalPolicy.DESTROY, // ⚠️ Solo para desarrollo
       billingMode: dynamodb.BillingMode.PAY_PER_REQUEST, // Facturación on-demand
 
